@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Pointers in C++/C | oldshensheep</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/icons/LatteAndCat.png">
+    <link rel="mask-icon" href="/icons/LatteAndCat.svg" color="#FF66CC">
+    <meta name="description" content="Programming and life">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <meta name="theme-color" content="#FF66CC">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="msapplication-TileImage" content="/icons/LatteAndCat.png">
+    <meta name="msapplication-TileColor" content="#000000">
+    
+    <link rel="preload" href="/assets/css/0.styles.d23d1cb3.css" as="style"><link rel="preload" href="/assets/js/app.0f51556c.js" as="script"><link rel="preload" href="/assets/js/3.d8807cbc.js" as="script"><link rel="preload" href="/assets/js/1.c323c844.js" as="script"><link rel="preload" href="/assets/js/19.ffafd2ec.js" as="script"><link rel="preload" href="/assets/js/10.2219a54c.js" as="script"><link rel="prefetch" href="/assets/js/11.2f7fb56e.js"><link rel="prefetch" href="/assets/js/12.7a883269.js"><link rel="prefetch" href="/assets/js/13.f790ec4d.js"><link rel="prefetch" href="/assets/js/14.0781c2bd.js"><link rel="prefetch" href="/assets/js/15.9d58985c.js"><link rel="prefetch" href="/assets/js/16.615d6008.js"><link rel="prefetch" href="/assets/js/17.c26d561f.js"><link rel="prefetch" href="/assets/js/18.2630b6b6.js"><link rel="prefetch" href="/assets/js/20.f8947ea2.js"><link rel="prefetch" href="/assets/js/21.c0ee7af2.js"><link rel="prefetch" href="/assets/js/4.75354658.js"><link rel="prefetch" href="/assets/js/5.a62847ae.js"><link rel="prefetch" href="/assets/js/6.35e36832.js"><link rel="prefetch" href="/assets/js/7.7098a551.js"><link rel="prefetch" href="/assets/js/8.3114726c.js"><link rel="prefetch" href="/assets/js/9.23793bce.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.d23d1cb3.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar" data-v-1156296a><div data-v-1156296a><div id="loader-wrapper" class="loading-wrapper" data-v-d48f4d20 data-v-1156296a data-v-1156296a><div class="loader-main" data-v-d48f4d20><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div><div data-v-d48f4d20></div></div> <!----> <!----></div> <div class="password-shadow password-wrapper-out" style="display:none;" data-v-4e82dffc data-v-1156296a data-v-1156296a><h3 class="title" data-v-4e82dffc data-v-4e82dffc>oldshensheep</h3> <p class="description" data-v-4e82dffc data-v-4e82dffc>Programming and life</p> <label id="box" class="inputBox" data-v-4e82dffc data-v-4e82dffc><input type="password" value="" data-v-4e82dffc> <span data-v-4e82dffc>Konck! Knock!</span> <button data-v-4e82dffc>OK</button></label> <div class="footer" data-v-4e82dffc data-v-4e82dffc><span data-v-4e82dffc><i class="iconfont reco-theme" data-v-4e82dffc></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-4e82dffc>vuePress-theme-reco</a></span> <span data-v-4e82dffc><i class="iconfont reco-copyright" data-v-4e82dffc></i> <a data-v-4e82dffc><span data-v-4e82dffc>oldshensheep</span>
+            
+          <span data-v-4e82dffc>2019 - </span>
+          2021
+        </a></span></div></div> <div class="hide" data-v-1156296a><header class="navbar" data-v-1156296a><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/avatar.png" alt="oldshensheep" class="logo"> <span class="site-name">oldshensheep</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont reco-home"></i>
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      Category
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/折腾/" class="nav-link"><i class="undefined"></i>
+  折腾
+</a></li><li class="dropdown-item"><!----> <a href="/categories/教程/" class="nav-link"><i class="undefined"></i>
+  教程
+</a></li><li class="dropdown-item"><!----> <a href="/categories/人生/" class="nav-link"><i class="undefined"></i>
+  人生
+</a></li><li class="dropdown-item"><!----> <a href="/categories/心理学/" class="nav-link"><i class="undefined"></i>
+  心理学
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  Tag
+</a></div><div class="nav-item"><a href="/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  TimeLine
+</a></div><div class="nav-item"><a href="/about/" class="nav-link"><i class="iconfont reco-account"></i>
+  About
+</a></div><div class="nav-item"><a href="https://blog.oldshensheep.com/toyweb/" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-home"></i>
+  Toy
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><a href="https://github.com/oldshensheep" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-github"></i>
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-1156296a></div> <aside class="sidebar" data-v-1156296a><div class="personal-info-wrapper" data-v-828910c6 data-v-1156296a><img src="/avatar.png" alt="author-avatar" class="personal-img" data-v-828910c6> <h3 class="name" data-v-828910c6>
+    oldshensheep
+  </h3> <div class="num" data-v-828910c6><div data-v-828910c6><h3 data-v-828910c6>8</h3> <h6 data-v-828910c6>Articles</h6></div> <div data-v-828910c6><h3 data-v-828910c6>10</h3> <h6 data-v-828910c6>Tags</h6></div></div> <ul class="social-links" data-v-828910c6></ul> <hr data-v-828910c6></div> <nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont reco-home"></i>
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      Category
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/折腾/" class="nav-link"><i class="undefined"></i>
+  折腾
+</a></li><li class="dropdown-item"><!----> <a href="/categories/教程/" class="nav-link"><i class="undefined"></i>
+  教程
+</a></li><li class="dropdown-item"><!----> <a href="/categories/人生/" class="nav-link"><i class="undefined"></i>
+  人生
+</a></li><li class="dropdown-item"><!----> <a href="/categories/心理学/" class="nav-link"><i class="undefined"></i>
+  心理学
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  Tag
+</a></div><div class="nav-item"><a href="/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  TimeLine
+</a></div><div class="nav-item"><a href="/about/" class="nav-link"><i class="iconfont reco-account"></i>
+  About
+</a></div><div class="nav-item"><a href="https://blog.oldshensheep.com/toyweb/" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-home"></i>
+  Toy
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><a href="https://github.com/oldshensheep" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-github"></i>
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav> <!----> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-4e82dffc data-v-1156296a><h3 class="title" data-v-4e82dffc data-v-4e82dffc>Pointers in C++/C</h3> <!----> <label id="box" class="inputBox" data-v-4e82dffc data-v-4e82dffc><input type="password" value="" data-v-4e82dffc> <span data-v-4e82dffc>Konck! Knock!</span> <button data-v-4e82dffc>OK</button></label> <div class="footer" data-v-4e82dffc data-v-4e82dffc><span data-v-4e82dffc><i class="iconfont reco-theme" data-v-4e82dffc></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-4e82dffc>vuePress-theme-reco</a></span> <span data-v-4e82dffc><i class="iconfont reco-copyright" data-v-4e82dffc></i> <a data-v-4e82dffc><span data-v-4e82dffc>oldshensheep</span>
+            
+          <span data-v-4e82dffc>2019 - </span>
+          2021
+        </a></span></div></div> <div data-v-1156296a><main class="page"><section><div class="page-title"><h1 class="title">Pointers in C++/C</h1> <div data-v-1ff7123e><i class="iconfont reco-account" data-v-1ff7123e><span data-v-1ff7123e>oldshensheep</span></i> <i class="iconfont reco-date" data-v-1ff7123e><span data-v-1ff7123e>6/14/2021</span></i> <i class="iconfont reco-eye" data-v-1ff7123e><span id="/note/c-pointer.html" data-flag-title="Your Article Title" class="leancloud-visitors" data-v-1ff7123e><a class="leancloud-visitors-count" style="font-size:.9rem;font-weight:normal;color:#999;"></a></span></i> <i class="tags iconfont reco-tag" data-v-1ff7123e><span class="tag-item" data-v-1ff7123e>C++/C</span><span class="tag-item" data-v-1ff7123e>指针</span></i></div></div> <div class="theme-reco-content content__default"><p>C++/C 的指针是什么？int* ? *(int*)var? 是什么鬼？？？</p> <p>指针就是地址，与其说指针，地址更容易理解。</p> <h2 id="指针变量的定义"><a href="#指针变量的定义" class="header-anchor">#</a> 指针变量的定义</h2> <p>一般的定义一个指针变量：数据类型* 变量名= new 数据类型();</p> <div class="language-cpp line-numbers-mode"><pre class="language-cpp"><code><span class="token keyword">int</span><span class="token operator">*</span> i <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+Sheep<span class="token operator">*</span> sheep <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Sheep</span><span class="token punctuation">(</span><span class="token string">&quot;mmm&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p>一个指针变量是有类型的（这不是废话？）为什么要有类型？地址大小不都是一样的吗？一般是32位或64位啊。
+但是如果指针变量没有类型的话用*运算符怎么取值？是取32位还是64位还是其他的？所以定义指针变量时声明的变量类型就是这个道理。
+如果你学过了汇编，下面的例子可以帮助你理解，看例子1，这里将2020h移入一个内存空间，为什么要加<code>word ptr</code>? 2020h不就是2个字节吗，你再声明写入一个2字节的内存空间不是有点多余？这里看起来有点多余，但是如果有这样的汇编指令（例子2和3），他们的行为一样吗？
+实际上是不一样的<code>mov word ptr [addr],20h</code>可以理解为<code>mov word ptr [addr],0020h</code>是实际上写入了2个字节的数据，例子3只写入了一个字节。再看例子4，如果不加<code>word ptr</code>你怎么区分例子2和例子3？（就是说你不知道你要写入多少数据）</p> <div class="language-nasm line-numbers-mode"><pre class="language-nasm"><code>mov word ptr <span class="token operator">[</span>addr<span class="token operator">]</span>,<span class="token number">2020h</span>    <span class="token comment">;例子1</span>
+mov word ptr <span class="token operator">[</span>addr<span class="token operator">]</span>,<span class="token number">20h</span>      <span class="token comment">;例子2</span>
+mov byte ptr <span class="token operator">[</span>addr<span class="token operator">]</span>,<span class="token number">20h</span>      <span class="token comment">;例子3</span>
+mov <span class="token operator">[</span>addr<span class="token operator">]</span>,<span class="token number">20h</span>               <span class="token comment">;例子4</span>
+mov <span class="token register variable">ax</span>,<span class="token operator">[</span>addr<span class="token operator">]</span>                <span class="token comment">;例子5</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>可以运行、修改下面的汇编代码测试上面的说法。</p> <div class="language-nasm line-numbers-mode"><pre class="language-nasm"><code>DATA SEGMENT
+    num dd <span class="token number">660F0655H</span>
+DATA ENDS
+
+CODE SEGMENT
+    ASSUME <span class="token register variable">CS</span>:CODE,<span class="token register variable">DS</span>:DATA
+<span class="token label function">START:</span>
+    mov <span class="token register variable">ax</span>,data
+    mov <span class="token register variable">ds</span>,<span class="token register variable">ax</span>
+    lea <span class="token register variable">si</span>,num
+    mov word ptr <span class="token operator">[</span><span class="token register variable">si</span><span class="token operator">]</span>,<span class="token number">2020h</span>
+    mov <span class="token register variable">ah</span>,<span class="token number">4ch</span>
+    int <span class="token number">21h</span>
+CODE ENDS
+    END START
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br></div></div><h2 id="指针的具体使用"><a href="#指针的具体使用" class="header-anchor">#</a> 指针的具体使用</h2> <h3 id="代码"><a href="#代码" class="header-anchor">#</a> 代码</h3> <div class="language-cpp line-numbers-mode"><pre class="language-cpp"><code><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream&gt;</span></span>
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span><span class="token operator">*</span> i <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span><span class="token operator">*</span> j <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> k <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">int</span> l <span class="token operator">=</span> <span class="token number">0x64fe10</span><span class="token punctuation">;</span> <span class="token comment">// 或者 &amp;j</span>
+    <span class="token comment">/**
+     * l为j变量的地址，理论上**l就可以取j的值 *l取j的内存地址，再取值。
+     * 实际上因为int类型不能直接取值，要转换成对应的数据类型的指针，再取值。
+     * 即*(int*)(*(int*)l)
+     */</span>
+    cout <span class="token operator">&lt;&lt;</span> <span class="token string">&quot;变量的内存地址&quot;</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+    cout <span class="token operator">&lt;&lt;</span> <span class="token string">&quot;&amp;i: &quot;</span> <span class="token operator">&lt;&lt;</span> <span class="token operator">&amp;</span>i <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+    cout <span class="token operator">&lt;&lt;</span> <span class="token string">&quot;&amp;j: &quot;</span> <span class="token operator">&lt;&lt;</span> <span class="token operator">&amp;</span>j <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+    cout <span class="token operator">&lt;&lt;</span> <span class="token string">&quot;&amp;k: &quot;</span> <span class="token operator">&lt;&lt;</span> <span class="token operator">&amp;</span>k <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+    cout <span class="token operator">&lt;&lt;</span> <span class="token string">&quot;&amp;l: &quot;</span> <span class="token operator">&lt;&lt;</span> <span class="token operator">&amp;</span>l <span class="token operator">&lt;&lt;</span> endl
+         <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+
+    cout <span class="token operator">&lt;&lt;</span> <span class="token string">&quot;变量的值&quot;</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+    cout <span class="token operator">&lt;&lt;</span> <span class="token string">&quot;i: &quot;</span> <span class="token operator">&lt;&lt;</span> i <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+    cout <span class="token operator">&lt;&lt;</span> <span class="token string">&quot;j: &quot;</span> <span class="token operator">&lt;&lt;</span> j <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+    cout <span class="token operator">&lt;&lt;</span> <span class="token string">&quot;k: &quot;</span> <span class="token operator">&lt;&lt;</span> k <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+    cout <span class="token operator">&lt;&lt;</span> <span class="token string">&quot;l: &quot;</span> <span class="token operator">&lt;&lt;</span> l <span class="token operator">&lt;&lt;</span> endl
+         <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+
+    cout <span class="token operator">&lt;&lt;</span> <span class="token operator">*</span>i <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+    cout <span class="token operator">&lt;&lt;</span> <span class="token string">&quot;l的值转成\&quot;int*\&quot;类型后取值&quot;</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+    cout <span class="token operator">&lt;&lt;</span> <span class="token operator">*</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token operator">*</span><span class="token punctuation">)</span>l <span class="token operator">&lt;&lt;</span> <span class="token string">&quot;\thex: &quot;</span> <span class="token operator">&lt;&lt;</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token operator">*</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token operator">*</span><span class="token punctuation">)</span>l<span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+    cout <span class="token operator">&lt;&lt;</span> <span class="token string">&quot;l的值指向的地址的值，再取前面的值指向的地址的值:&quot;</span> <span class="token operator">&lt;&lt;</span> <span class="token operator">*</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token operator">*</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token operator">*</span><span class="token punctuation">)</span>l<span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> endl
+         <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br></div></div><h3 id="运行结果"><a href="#运行结果" class="header-anchor">#</a> 运行结果</h3> <div class="language- line-numbers-mode"><pre class="language-text"><code>变量的内存地址
+&amp;i: 0x64fe18
+&amp;j: 0x64fe10
+&amp;k: 0x64fe0c
+&amp;l: 0x64fe08
+
+变量的值
+i: 0x2632540
+j: 0x2632560
+k: 0
+l: 6618640
+
+1
+l的值转成&quot;int*&quot;类型后取值
+40052064        hex: 0x2632560
+l的值指向的地址的值，再取前面的值指向的地址的值:2
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><h3 id="变量的内存分布"><a href="#变量的内存分布" class="header-anchor">#</a> 变量的内存分布</h3> <p>栈的内存分布</p> <table><thead><tr><th style="text-align:center;">地址</th> <th style="text-align:center;">变量名</th> <th style="text-align:center;">值</th></tr></thead> <tbody><tr><td style="text-align:center;">0x64fe18</td> <td style="text-align:center;">i</td> <td style="text-align:center;">0x662540</td></tr> <tr><td style="text-align:center;">0x64fe10</td> <td style="text-align:center;">j</td> <td style="text-align:center;">0x662560</td></tr> <tr><td style="text-align:center;">0x64fe0c</td> <td style="text-align:center;">k</td> <td style="text-align:center;">0</td></tr> <tr><td style="text-align:center;">0x64fe08</td> <td style="text-align:center;">l</td> <td style="text-align:center;">0x64fe10</td></tr></tbody></table> <p>堆的内存分布</p> <table><thead><tr><th>地址</th> <th>值</th></tr></thead> <tbody><tr><td>0x662540</td> <td>1</td></tr> <tr><td>0x662560</td> <td>2</td></tr></tbody></table> <h3 id="运行结果分析"><a href="#运行结果分析" class="header-anchor">#</a> 运行结果分析</h3> <p>前面的&amp;i，&amp;j……i，j……应该都没有问题。看下面的简要介绍和上面的内存分布图应该可以很容易明白。
+&amp;变量：取变量的地址
+*变量：取变量的值所指向的内存地址的值，类似于间接寻址。
+下面两个汇编语句，一个是寄存器间接寻址，另一个是直接寻址。</p> <div class="language-nasm line-numbers-mode"><pre class="language-nasm"><code>mov <span class="token register variable">ax</span>,<span class="token operator">[</span><span class="token register variable">si</span><span class="token operator">]</span>    <span class="token comment">;把si的值指向的地址的值放到ax中</span>
+mov <span class="token register variable">ax</span>,<span class="token register variable">si</span>      <span class="token comment">;把si的值             放到ax中</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><h4 id="对-int-l-和-int-int-l-的分析"><a href="#对-int-l-和-int-int-l-的分析" class="header-anchor">#</a> 对 *(int*)l 和 *(int*)(*(int*)l)的分析</h4> <ul><li>*i的值是多少？
+i的值为0x662540，*i就是i的值指向的内存地址的值，也就是内存地址为0x662540的变量的值，是1。</li> <li>那么*l的值是多少？
+类似上面*i的解释，*l的值应该是0x662560？
+这里有个问题是*l是合法的吗，l的变量类型是int，不是一个地址，如果要取值的话又怎么知道取多大的内存？因为这里我们知道l的值和j变量的内存地址是一样的，而变量j的类型是int*所以这里我们把i转换为int*（这样就可以知道取多大的内存了），然后再取值，也就是*(int*)l，得到0x662560。</li> <li>那么**l的值是多少？
+和上面一样是不能直接使用*的，要使用强制类型转换。为了描述方便文本里还是不使用强制类型转换。
+*l的值是0x662560，那么**l的值也就是0x662560得内存地址得值：2。
+同样得因为取值要知道取多大得内存，这里要使用强制类型转换，实际上得表达式就是*(int*)(*(int*)l)</li></ul></div></section> <footer class="page-edit"><!----> <!----></footer> <!----> <div class="comments-wrapper"><!----></div> <ul class="side-bar sub-sidebar-wrapper" style="width:12rem;" data-v-70334359><li class="level-2" data-v-70334359><a href="/note/c-pointer.html#指针变量的定义" class="sidebar-link reco-side-指针变量的定义" data-v-70334359>指针变量的定义</a></li><li class="level-2" data-v-70334359><a href="/note/c-pointer.html#指针的具体使用" class="sidebar-link reco-side-指针的具体使用" data-v-70334359>指针的具体使用</a></li><li class="level-3" data-v-70334359><a href="/note/c-pointer.html#代码" class="sidebar-link reco-side-代码" data-v-70334359>代码</a></li><li class="level-3" data-v-70334359><a href="/note/c-pointer.html#运行结果" class="sidebar-link reco-side-运行结果" data-v-70334359>运行结果</a></li><li class="level-3" data-v-70334359><a href="/note/c-pointer.html#变量的内存分布" class="sidebar-link reco-side-变量的内存分布" data-v-70334359>变量的内存分布</a></li><li class="level-3" data-v-70334359><a href="/note/c-pointer.html#运行结果分析" class="sidebar-link reco-side-运行结果分析" data-v-70334359>运行结果分析</a></li></ul></main> <!----></div></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div><!----></div></div>
+    <script src="/assets/js/app.0f51556c.js" defer></script><script src="/assets/js/3.d8807cbc.js" defer></script><script src="/assets/js/1.c323c844.js" defer></script><script src="/assets/js/19.ffafd2ec.js" defer></script><script src="/assets/js/10.2219a54c.js" defer></script>
+  </body>
+</html>
