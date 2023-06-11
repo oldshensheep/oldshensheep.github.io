@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Windows on oldshensheep</title>
+    <link>https://blog.oldshensheep.com/tags/windows/</link>
+    <description>Recent content in Windows on oldshensheep</description>
+    <image>
+      <url>https://blog.oldshensheep.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://blog.oldshensheep.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 09 Aug 2022 20:00:00 +0000</lastBuildDate><atom:link href="https://blog.oldshensheep.com/tags/windows/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Windows 快照？</title>
+      <link>https://blog.oldshensheep.com/note/windows-snapshot/</link>
+      <pubDate>Tue, 09 Aug 2022 20:00:00 +0000</pubDate>
+      
+      <guid>https://blog.oldshensheep.com/note/windows-snapshot/</guid>
+      <description>Windows 也有快照？真的是文件系统的快照？还可以通过系统自带的文件历史还原？
+新建快照 Windows 称之为 Volume Shadow Copy (VSS)
+Windows 的快照是通过 Copy On Write 实现的，众所周知对性能有一定影响。
+关闭系统还原点功能 新建快照是不需要开启系统还原点功能的！
+开启还原点功能会导致老的快照更快的被删除，因为快照占用的空间是有限的，而还原点会占用大量的快照空间，快照空间不足就会删除旧的快照，所以最好把还原点功能关闭了。
+新建一个快照 新建一个文件测试一下快照
+在 HOME 目录下新建一个内容为 100 的 test.txt 文件
+❯ 100 &amp;gt; test.txt ❯ cat .\test.txt 100 创建一个 C 盘的快照，注意我这里用了 sudo 表明需要管理员权限。
+❯ sudo wmic shadowcopy call create Volume=C:\ Executing (Win32_ShadowCopy)-&amp;gt;create() Method execution successful. Out Parameters: instance of __PARAMETERS { ReturnValue = 0; ShadowID = &amp;#34;{57587129-D224-4E21-BC36-4C3D9B1DFDC7}&amp;#34;; }; 快照就成功建立了！
+看看效果是怎么样的，把之前新建得到 ~/test.txt 的内容修改为 101 试试。</description>
+    </item>
+    
+    <item>
+      <title>ZFS on Windows (using WSL2)</title>
+      <link>https://blog.oldshensheep.com/note/zfs-on-windows/</link>
+      <pubDate>Wed, 27 Jul 2022 18:30:00 +0000</pubDate>
+      
+      <guid>https://blog.oldshensheep.com/note/zfs-on-windows/</guid>
+      <description>这个让 ZFS 工作在 Windows 上的项目还不太稳定，经常蓝屏，便寻求其他解决方案，于是乎。
+有人可能会说你在不是脱裤子放屁吗，这不就是装个虚拟机运行 Linux？？？
+是的，我就是脱裤子放屁。
+写这个文章的时候使用的是 ArchLinux 的 WSL2，为了使教程更简单，也为了从 0 实现，这篇文章使用 Ubuntu22.04 版本进行测试。
+先决条件 安装 WSL2 版本的 Ubuntu22.04，其他的系统版本应当也可。
+具体安装方法参考官方文档。
+对于系统版本大于 Windows 10 version 2004 或者 Windows11 的用户参考下面的文档：
+https://docs.microsoft.com/en-us/windows/wsl/install
+对于系统版本大于 Version 1903 的参考下面的文档：
+https://docs.microsoft.com/en-us/windows/wsl/install-manual
+替换 WSL 的 Linux Kernel 参考文档1
+在此 https://github.com/oldshensheep/zfs-on-wsl/releases 下载编译好的支持 ZFS 的 Kernel，需要下载 bzImage，放到 Windows 的一个地方。
+然后在 PowerShell 窗口中执行以下命令：
+注意把&amp;lt;bzImage Path&amp;gt;替换成你下载的 bzImage 的路径，例如C:\\Fun\\bzImage
+&amp;#34; [wsl2] kernel=&amp;lt;bzImage Path&amp;gt; &amp;#34; &amp;gt; ~/.wslconfig 然后wsl --shutdown关闭运行中的实例，然后重新启动 Ubuntu。
+挂载硬盘到 WSL2 参考文档2</description>
+    </item>
+    
+    <item>
+      <title>让 Windows 更加适合开发</title>
+      <link>https://blog.oldshensheep.com/note/lindows/</link>
+      <pubDate>Fri, 27 May 2022 20:00:00 +0000</pubDate>
+      
+      <guid>https://blog.oldshensheep.com/note/lindows/</guid>
+      <description>在 Windows 上进行优雅的编程是个头疼的问题，但是在我的精心调教下，她变得听话了许多……
+安装 scoop 为什么选择 scoop？
+有类似的选择如 chocolatey ，WinGet 但是我选择了 scoop。第一是因为 scoop 的软件很多是便携软件。便携，顾名思义可以很方便带着跑的东西。scoop 安装的软件也是一样的，重装系统不必重新配置一大堆环境变量，不必重新安装一大堆软件。重装系统后可以很快就可以配置好各种环境变量，软件也不必再安装。
+安装 scoop 也非常简单
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser irm get.scoop.sh | iex 有更多问题访问 scoop 官网 https://scoop.sh/
+报告问题等访问仓库 Issue https://github.com/ScoopInstaller/Scoop/issues
+变成Lindows 安装了 scoop，是时候展现她的力量了。
+先来安装一下 busybox 和 gsudo
+scoop install busybox gsudo busybox 内置了 linux 的很多命令，常用的基本上都有了。
+安装 gsudo 可以临时提权类似与 linux 的 sudo（不过有烦人的 UAC，关掉又不安全）。Windows 最终变成了 Linux 的样子，嘿嘿 Windows❤️Linux。
+安装完成后可以使用sudo命令提权
+🔽点击展开 Windows中busybox自带的命令 ar arch ash awk base64 basename bash bunzip2 bzcat bzip2 cal cat chmod cksum clear cmp comm cp cpio cut date dc dd df diff dirname dos2unix dpkg dpkg-deb du echo ed egrep env expand expr factor false fgrep find fold fsync ftpget ftpput getopt grep groups gunzip gzip hd head hexdump httpd iconv id ipcalc kill killall less link ln logname ls lzcat lzma lzop lzopcat man md5sum mkdir mktemp mv nc nl od paste patch pgrep pidof pipe_progress pkill printenv printf ps pwd readlink realpath reset rev rm rmdir rpm rpm2cpio sed seq sh sha1sum sha256sum sha3sum sha512sum shred shuf sleep sort split ssl_client stat strings su sum tac tail tar tee test time timeout touch tr true truncate ts ttysize uname uncompress unexpand uniq unix2dos unlink unlzma unlzop unxz unzip usleep uudecode uuencode vi watch wc wget which whoami whois xargs xxd xz xzcat yes zcat 有了这些命令Windows变得更像Linux了。如果有没有的命令可以尝试搜索一下`scoop search something`。 开发环境配置 在 Linux 里配置开发环境是很简单的，例如在 ArchLinux 里配置 java 开发环境，很快捷方便。</description>
+    </item>
+    
+  </channel>
+</rss>

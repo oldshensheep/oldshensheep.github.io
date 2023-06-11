@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>记录 on oldshensheep</title>
+    <link>https://blog.oldshensheep.com/tags/%E8%AE%B0%E5%BD%95/</link>
+    <description>Recent content in 记录 on oldshensheep</description>
+    <image>
+      <url>https://blog.oldshensheep.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://blog.oldshensheep.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 19 Sep 2020 11:44:16 +0000</lastBuildDate><atom:link href="https://blog.oldshensheep.com/tags/%E8%AE%B0%E5%BD%95/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>我的音乐之旅</title>
+      <link>https://blog.oldshensheep.com/note/my-musical-journey/</link>
+      <pubDate>Sat, 19 Sep 2020 11:44:16 +0000</pubDate>
+      
+      <guid>https://blog.oldshensheep.com/note/my-musical-journey/</guid>
+      <description>音乐是多么奇妙！
+我认为音乐在我的人生中很重要，虽然我“真正开始”听音乐的时候比较晚，大概高中吧。在此之前，我认为我所听的非我所想。但到高中之后我听的音乐比以往听过的音乐都要多的多，对音乐的了解也比以前多得多。就像发现了宝藏，发现了秘密。
+初中之前 初中之前听的音乐大都是“流行音乐”，也不经常听。
+高中 高中认识了网易云音乐，这是开端 一次网友叫我关注他的网易云音乐
+然后认识了 Vocaloid，这是开始 深入 Vocaloid，这是认识 大学 有了技术就可以实现心中所想
+音乐歌单比对 第一阶段 Python 歌单比对 控制台
+参考了网上的各种实现，这里是爬取网页解析后获取歌单的 Python 歌单比对（Web.py）Web 端
+看 web.py 的官方文档草草写了个，HTML、CSS 和 JS 还不怎么会 第二阶段 Python 歌单比对 QQ 音乐支持
+用 QQ 音乐的 API Java 歌单比对 控制台
+歌单比对，算是重写了 Python 版的 Java 歌单比对 Android
+东拼西凑的实验品…… Java 歌单比对 （用第开源的 API 程序获取数据）控制台 第三阶段 HTML、CSS、Javascript
+认识了 Vue.js，写起来很快。用了开源的 API 程序所以不用写后端了。 </description>
+    </item>
+    
+  </channel>
+</rss>

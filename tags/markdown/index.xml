@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>markdown on oldshensheep</title>
+    <link>https://blog.oldshensheep.com/tags/markdown/</link>
+    <description>Recent content in markdown on oldshensheep</description>
+    <image>
+      <url>https://blog.oldshensheep.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://blog.oldshensheep.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 06 Dec 2020 10:24:12 +0000</lastBuildDate><atom:link href="https://blog.oldshensheep.com/tags/markdown/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>学习Markdown</title>
+      <link>https://blog.oldshensheep.com/note/markdown-learning/</link>
+      <pubDate>Sun, 06 Dec 2020 10:24:12 +0000</pubDate>
+      
+      <guid>https://blog.oldshensheep.com/note/markdown-learning/</guid>
+      <description>常用的 Markdown 语法，记录一些加强记忆。
+删除线 ~~删除线~~ 删除线
+斜体 _斜体_ 斜体
+粗体 **粗体** 粗体
+斜体粗体 **_斜体粗体_** 斜体粗体
+水平分割线 --- 链接 &amp;lt;http://http://oldshensheep.com&amp;gt; http://http://oldshensheep.com
+[我是一个链接](http://oldshensheep.com) 我是一个链接
+![我的桌面图片](http://example.com/p.jpg) </description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Android on oldshensheep</title>
+    <link>https://blog.oldshensheep.com/tags/android/</link>
+    <description>Recent content in Android on oldshensheep</description>
+    <image>
+      <url>https://blog.oldshensheep.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://blog.oldshensheep.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 28 Jan 2021 17:23:33 +0000</lastBuildDate><atom:link href="https://blog.oldshensheep.com/tags/android/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>mount cifs in android</title>
+      <link>https://blog.oldshensheep.com/note/mount-cifs-in-android/</link>
+      <pubDate>Thu, 28 Jan 2021 17:23:33 +0000</pubDate>
+      
+      <guid>https://blog.oldshensheep.com/note/mount-cifs-in-android/</guid>
+      <description>虽然 Google 在新版本的 android 中提供了新的访问文件的方式，一些文件管理器（如 MiXplorer ）可以访问 smb，其他应用程序访问这个文件管理器就可以间接的访问 smb 了。
+但是并不是所有的应用程序都支持，所以直接挂载 smb 是一个比较好的解决办法（必须要 Root）。
+前提条件 Android 系统获取 Root 权限 安装了 BusyBox, 注意必须是 BusyBox ，而不是系统自带的 ToyBox，在测试中 toybox 不支持挂载网络文件系统。我是通过 DevCheck 这个软件查看的。 折腾的结果 需要快速解决问题的只看这个就行了
+执行下面的程序就可以挂载 smb 了，根据自己实际情况修改 host,user,pass,还有脚本末尾的挂载位置
+host=&amp;#34;192.168.1.5&amp;#34; user=&amp;#34;sheep&amp;#34; pass=&amp;#34;123456789&amp;#34; gid=9997 uid=9997 file_mode=0770 dir_mode=0770 # 挂载前要新建好挂载的位置的文件夹 # //$host/main 是smb的文件夹 /.../emulated/0/{cifs/main} 是手机存储文件夹 su -mm -c mount -o user=$user,pass=$pass,rw,gid=$gid,uid=$uid,file_mode=$file_mode,dir_mode=$dir_mode -t cifs //$host/main /mnt/runtime/full/emulated/0/cifs/main 折腾的大致过程 首先打开终端，这里用的是 termux，理论上其他终端也可以。
+然后输入下面的命令
+su # 获取root权限 mkdir /mnt/sdcard/cifs # 挂载点 mount -o user=******,pass=&amp;#34;*****&amp;#34; -t cifs //192.</description>
+    </item>
+    
+  </channel>
+</rss>

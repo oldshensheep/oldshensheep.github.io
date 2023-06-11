@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Tags on oldshensheep</title>
+    <link>https://blog.oldshensheep.com/tags/</link>
+    <description>Recent content in Tags on oldshensheep</description>
+    <image>
+      <url>https://blog.oldshensheep.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://blog.oldshensheep.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 09 Aug 2022 20:00:00 +0000</lastBuildDate><atom:link href="https://blog.oldshensheep.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Windows</title>
+      <link>https://blog.oldshensheep.com/tags/windows/</link>
+      <pubDate>Tue, 09 Aug 2022 20:00:00 +0000</pubDate>
+      
+      <guid>https://blog.oldshensheep.com/tags/windows/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Linux</title>
+      <link>https://blog.oldshensheep.com/tags/linux/</link>
+      <pubDate>Wed, 27 Jul 2022 18:30:00 +0000</pubDate>
+      
+      <guid>https://blog.oldshensheep.com/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Web</title>
+      <link>https://blog.oldshensheep.com/tags/web/</link>
+      <pubDate>Mon, 27 Sep 2021 15:50:00 +0000</pubDate>
+      
+      <guid>https://blog.oldshensheep.com/tags/web/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>指针</title>
+      <link>https://blog.oldshensheep.com/tags/%E6%8C%87%E9%92%88/</link>
+      <pubDate>Mon, 14 Jun 2021 14:42:56 +0000</pubDate>
+      
+      <guid>https://blog.oldshensheep.com/tags/%E6%8C%87%E9%92%88/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Android</title>
+      <link>https://blog.oldshensheep.com/tags/android/</link>
+      <pubDate>Thu, 28 Jan 2021 17:23:33 +0000</pubDate>
+      
+      <guid>https://blog.oldshensheep.com/tags/android/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>markdown</title>
+      <link>https://blog.oldshensheep.com/tags/markdown/</link>
+      <pubDate>Sun, 06 Dec 2020 10:24:12 +0000</pubDate>
+      
+      <guid>https://blog.oldshensheep.com/tags/markdown/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>胡思乱想</title>
+      <link>https://blog.oldshensheep.com/tags/%E8%83%A1%E6%80%9D%E4%B9%B1%E6%83%B3/</link>
+      <pubDate>Sat, 05 Dec 2020 23:55:24 +0000</pubDate>
+      
+      <guid>https://blog.oldshensheep.com/tags/%E8%83%A1%E6%80%9D%E4%B9%B1%E6%83%B3/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>记录</title>
+      <link>https://blog.oldshensheep.com/tags/%E8%AE%B0%E5%BD%95/</link>
+      <pubDate>Sat, 19 Sep 2020 11:44:16 +0000</pubDate>
+      
+      <guid>https://blog.oldshensheep.com/tags/%E8%AE%B0%E5%BD%95/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>心理学</title>
+      <link>https://blog.oldshensheep.com/tags/%E5%BF%83%E7%90%86%E5%AD%A6/</link>
+      <pubDate>Fri, 06 Mar 2020 21:46:41 +0000</pubDate>
+      
+      <guid>https://blog.oldshensheep.com/tags/%E5%BF%83%E7%90%86%E5%AD%A6/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ISCSI</title>
+      <link>https://blog.oldshensheep.com/tags/iscsi/</link>
+      <pubDate>Tue, 25 Feb 2020 09:55:01 +0000</pubDate>
+      
+      <guid>https://blog.oldshensheep.com/tags/iscsi/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hexo</title>
+      <link>https://blog.oldshensheep.com/tags/hexo/</link>
+      <pubDate>Sat, 11 Jan 2020 17:08:03 +0000</pubDate>
+      
+      <guid>https://blog.oldshensheep.com/tags/hexo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>C/C&#43;&#43;</title>
+      <link>https://blog.oldshensheep.com/tags/c/c&#43;&#43;/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.oldshensheep.com/tags/c/c&#43;&#43;/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

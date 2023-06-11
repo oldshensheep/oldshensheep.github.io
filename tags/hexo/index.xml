@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>hexo on oldshensheep</title>
+    <link>https://blog.oldshensheep.com/tags/hexo/</link>
+    <description>Recent content in hexo on oldshensheep</description>
+    <image>
+      <url>https://blog.oldshensheep.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://blog.oldshensheep.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 11 Jan 2020 17:08:03 +0000</lastBuildDate><atom:link href="https://blog.oldshensheep.com/tags/hexo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>用github&#43;hexo创建自己的blog网站</title>
+      <link>https://blog.oldshensheep.com/note/create-blog/</link>
+      <pubDate>Sat, 11 Jan 2020 17:08:03 +0000</pubDate>
+      
+      <guid>https://blog.oldshensheep.com/note/create-blog/</guid>
+      <description>用 github 和 hexo 创建一个属于自己的 blog 网站
+本文章是在 Windows 环境下完成的。
+如果认真看完了这个教程还是不会做，那……
+建立一个 github 账号 点击进入网站注册 https://github.com
+建立一个仓库（repository） 第一步，点击新建按钮
+第二步，创建仓库
+下载安装 git 点击下载 git https://git-scm.com/download/win
+国内下载可能比较慢，淘宝镜像地址 https://npm.taobao.org/mirrors/git-for-windows/v2.24.1.windows.2/Git-2.24.1.2-64-bit.exe
+安装一路下一步就行了
+下载安装 nodejs 点击下载安装 nodejs https://nodejs.org/dist/v12.14.1/node-v12.14.1-x64.msi
+下一步，下一步，下一步（你安装国内的一些软件可不能这样哦）
+安装 hexo 在某个地方新建一个文件夹，这个文件夹是储存你网站相关的文件的
+有个小技巧：
+这里我把文件夹建在了桌面，在空白处按 Shift 然后鼠标右键可以快捷在此处打开 Powershell
+在 cmd/PowerShell 输入
+cmd npm install -g hexo-cli cd #你新建文件夹的名字 hexo init 部署到 github 安装部署工具
+npm install hexo-deployer-git --save 先编辑一下 hexo 文件夹里的_config.yml 这个配置文件，在底部添加
+deploy: type: git repo: https://github.com/oldshensheep/oldshensheep.github.io # oldshensheep换成你的用户名就行了 branch: master 然后在刚才的 powershell 窗口输入</description>
+    </item>
+    
+  </channel>
+</rss>

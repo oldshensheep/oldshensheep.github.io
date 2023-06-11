@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Notes on oldshensheep</title>
+    <link>https://blog.oldshensheep.com/note/</link>
+    <description>Recent content in Notes on oldshensheep</description>
+    <image>
+      <url>https://blog.oldshensheep.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://blog.oldshensheep.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 09 Aug 2022 20:00:00 +0000</lastBuildDate><atom:link href="https://blog.oldshensheep.com/note/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Windows 快照？</title>
+      <link>https://blog.oldshensheep.com/note/windows-snapshot/</link>
+      <pubDate>Tue, 09 Aug 2022 20:00:00 +0000</pubDate>
+      
+      <guid>https://blog.oldshensheep.com/note/windows-snapshot/</guid>
+      <description>Windows 也有快照？真的是文件系统的快照？还可以通过系统自带的文件历史还原？
+新建快照 Windows 称之为 Volume Shadow Copy (VSS)
+Windows 的快照是通过 Copy On Write 实现的，众所周知对性能有一定影响。
+关闭系统还原点功能 新建快照是不需要开启系统还原点功能的！
+开启还原点功能会导致老的快照更快的被删除，因为快照占用的空间是有限的，而还原点会占用大量的快照空间，快照空间不足就会删除旧的快照，所以最好把还原点功能关闭了。
+新建一个快照 新建一个文件测试一下快照
+在 HOME 目录下新建一个内容为 100 的 test.txt 文件
+❯ 100 &amp;gt; test.txt ❯ cat .\test.txt 100 创建一个 C 盘的快照，注意我这里用了 sudo 表明需要管理员权限。
+❯ sudo wmic shadowcopy call create Volume=C:\ Executing (Win32_ShadowCopy)-&amp;gt;create() Method execution successful. Out Parameters: instance of __PARAMETERS { ReturnValue = 0; ShadowID = &amp;#34;{57587129-D224-4E21-BC36-4C3D9B1DFDC7}&amp;#34;; }; 快照就成功建立了！
+看看效果是怎么样的，把之前新建得到 ~/test.txt 的内容修改为 101 试试。</description>
+    </item>
+    
+    <item>
+      <title>ZFS on Windows (using WSL2)</title>
+      <link>https://blog.oldshensheep.com/note/zfs-on-windows/</link>
+      <pubDate>Wed, 27 Jul 2022 18:30:00 +0000</pubDate>
+      
+      <guid>https://blog.oldshensheep.com/note/zfs-on-windows/</guid>
+      <description>这个让 ZFS 工作在 Windows 上的项目还不太稳定，经常蓝屏，便寻求其他解决方案，于是乎。
+有人可能会说你在不是脱裤子放屁吗，这不就是装个虚拟机运行 Linux？？？
+是的，我就是脱裤子放屁。
+写这个文章的时候使用的是 ArchLinux 的 WSL2，为了使教程更简单，也为了从 0 实现，这篇文章使用 Ubuntu22.04 版本进行测试。
+先决条件 安装 WSL2 版本的 Ubuntu22.04，其他的系统版本应当也可。
+具体安装方法参考官方文档。
+对于系统版本大于 Windows 10 version 2004 或者 Windows11 的用户参考下面的文档：
+https://docs.microsoft.com/en-us/windows/wsl/install
+对于系统版本大于 Version 1903 的参考下面的文档：
+https://docs.microsoft.com/en-us/windows/wsl/install-manual
+替换 WSL 的 Linux Kernel 参考文档1
+在此 https://github.com/oldshensheep/zfs-on-wsl/releases 下载编译好的支持 ZFS 的 Kernel，需要下载 bzImage，放到 Windows 的一个地方。
+然后在 PowerShell 窗口中执行以下命令：
+注意把&amp;lt;bzImage Path&amp;gt;替换成你下载的 bzImage 的路径，例如C:\\Fun\\bzImage
+&amp;#34; [wsl2] kernel=&amp;lt;bzImage Path&amp;gt; &amp;#34; &amp;gt; ~/.wslconfig 然后wsl --shutdown关闭运行中的实例，然后重新启动 Ubuntu。
+挂载硬盘到 WSL2 参考文档2</description>
+    </item>
+    
+    <item>
+      <title>让 Windows 更加适合开发</title>
+      <link>https://blog.oldshensheep.com/note/lindows/</link>
+      <pubDate>Fri, 27 May 2022 20:00:00 +0000</pubDate>
+      
+      <guid>https://blog.oldshensheep.com/note/lindows/</guid>
+      <description>在 Windows 上进行优雅的编程是个头疼的问题，但是在我的精心调教下，她变得听话了许多……
+安装 scoop 为什么选择 scoop？
+有类似的选择如 chocolatey ，WinGet 但是我选择了 scoop。第一是因为 scoop 的软件很多是便携软件。便携，顾名思义可以很方便带着跑的东西。scoop 安装的软件也是一样的，重装系统不必重新配置一大堆环境变量，不必重新安装一大堆软件。重装系统后可以很快就可以配置好各种环境变量，软件也不必再安装。
+安装 scoop 也非常简单
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser irm get.scoop.sh | iex 有更多问题访问 scoop 官网 https://scoop.sh/
+报告问题等访问仓库 Issue https://github.com/ScoopInstaller/Scoop/issues
+变成Lindows 安装了 scoop，是时候展现她的力量了。
+先来安装一下 busybox 和 gsudo
+scoop install busybox gsudo busybox 内置了 linux 的很多命令，常用的基本上都有了。
+安装 gsudo 可以临时提权类似与 linux 的 sudo（不过有烦人的 UAC，关掉又不安全）。Windows 最终变成了 Linux 的样子，嘿嘿 Windows❤️Linux。
+安装完成后可以使用sudo命令提权
+🔽点击展开 Windows中busybox自带的命令 ar arch ash awk base64 basename bash bunzip2 bzcat bzip2 cal cat chmod cksum clear cmp comm cp cpio cut date dc dd df diff dirname dos2unix dpkg dpkg-deb du echo ed egrep env expand expr factor false fgrep find fold fsync ftpget ftpput getopt grep groups gunzip gzip hd head hexdump httpd iconv id ipcalc kill killall less link ln logname ls lzcat lzma lzop lzopcat man md5sum mkdir mktemp mv nc nl od paste patch pgrep pidof pipe_progress pkill printenv printf ps pwd readlink realpath reset rev rm rmdir rpm rpm2cpio sed seq sh sha1sum sha256sum sha3sum sha512sum shred shuf sleep sort split ssl_client stat strings su sum tac tail tar tee test time timeout touch tr true truncate ts ttysize uname uncompress unexpand uniq unix2dos unlink unlzma unlzop unxz unzip usleep uudecode uuencode vi watch wc wget which whoami whois xargs xxd xz xzcat yes zcat 有了这些命令Windows变得更像Linux了。如果有没有的命令可以尝试搜索一下`scoop search something`。 开发环境配置 在 Linux 里配置开发环境是很简单的，例如在 ArchLinux 里配置 java 开发环境，很快捷方便。</description>
+    </item>
+    
+    <item>
+      <title>Private Network Access update</title>
+      <link>https://blog.oldshensheep.com/note/private-network-access-update/</link>
+      <pubDate>Mon, 27 Sep 2021 15:50:00 +0000</pubDate>
+      
+      <guid>https://blog.oldshensheep.com/note/private-network-access-update/</guid>
+      <description>在你访问一个 http 网站时你可能遇到了下面的错误。
+The request client is not a secure context and the resource is in more-private address space local 这是 Chrome94 之后的版本提供的错误提示，因为你的浏览器从 一个源为 http 的网站访问了一个 私有地址 (不太准确)。这在 Chrome 之后默认是不允许的。1
+Why? 为什么不允许？当前的浏览器都不限制 http 网站访问私有地址，这是一个安全隐患。
+假设你有一个路由器，用户名密码都是默认的，然后访问了一个 http 的网站，那个网站是可以访问到路由器的，而你的路由器的用户名密码又是默认的，那么网站就可以登录到你的路由器了。
+还有就是我们一般认为外界是访问不了本地网络的服务的，这样我们可能都设个弱口令。但是通过浏览器，网站就可以访问到本地网络，我们的本地服务就有被攻击的风险。
+What? 什么情况下请求会被认为是Private Network Access？
+网络地址分为 3 类（不讨论 IPv6）。详细资料可以从2获取
+Local 127.0.0.0/8 Private 10.0.0.0/8 172.16.0.0/12 192.168.0.0/16 169.254.0.0/16 Public 上面列出的之外的 ip 从上到下越来越开放，
+一个源为 http 的请求的地址比目的地址更开放，那么这个请求就是私有网络访问。不外乎 3 种情况，Public-&amp;gt;Private，Public-&amp;gt;Local，Private-&amp;gt;Local。 另一个比较特殊的是用代理会改变目的地址的 ip，通过代理获取的资源，被看作是从代理的 ip 那里获取的。（这里说的改变不是真的改变） How? 怎么解决当前的问题？下面的内容参考自1。
+访问 Local 把你要访问的网站升级到 https。</description>
+    </item>
+    
+    <item>
+      <title>Pointers in C/C&#43;&#43;</title>
+      <link>https://blog.oldshensheep.com/note/c&#43;&#43;-pointer/</link>
+      <pubDate>Mon, 14 Jun 2021 14:42:56 +0000</pubDate>
+      
+      <guid>https://blog.oldshensheep.com/note/c&#43;&#43;-pointer/</guid>
+      <description>C/C++ 的指针是什么？int* ? *(int*)var? 是什么鬼？？？
+指针就是地址，与其说指针，地址更容易理解。
+指针变量的定义 一般的定义一个指针变量：数据类型* 变量名= new 数据类型();
+int* i = new int(1); Sheep* sheep = new Sheep(&amp;#34;mmm&amp;#34;); 一个指针变量是有类型的（这不是废话？）为什么要有类型？地址大小不都是一样的吗？一般是32位或64位啊。
+但是如果指针变量没有类型的话用*运算符怎么取值？是取32位还是64位还是其他的？所以定义指针变量时声明的变量类型就是这个道理。
+如果你学过了汇编，下面的例子可以帮助你理解，看例子1，这里将2020h移入一个内存空间，为什么要加word ptr? 2020h不就是2个字节吗，你再声明写入一个2字节的内存空间不是有点多余？这里看起来有点多余，但是如果有这样的汇编指令（例子2和3），他们的行为一样吗？
+实际上是不一样的mov word ptr [addr],20h可以理解为mov word ptr [addr],0020h是实际上写入了2个字节的数据，例子3只写入了一个字节。再看例子4，如果不加word ptr你怎么区分例子2和例子3？（就是说你不知道你要写入多少数据）
+mov word ptr [addr],2020h ;例子1 mov word ptr [addr],20h ;例子2 mov byte ptr [addr],20h ;例子3 mov [addr],20h ;例子4 mov ax,[addr] ;例子5 可以运行、修改下面的汇编代码测试上面的说法。
+DATA SEGMENT num dd 660F0655H DATA ENDS CODE SEGMENT ASSUME CS:CODE,DS:DATA START: mov ax,data mov ds,ax lea si,num mov word ptr [si],2020h mov ah,4ch int 21h CODE ENDS END START 指针的具体使用 代码 #include &amp;lt;iostream&amp;gt; using namespace std; int main() { int* i = new int(1); int* j = new int(2); int k = 0; int l = 0x64fe10; // 或者 &amp;amp;j /** * l为j变量的地址，理论上**l就可以取j的值 *l取j的内存地址，再取值。 * 实际上因为int类型不能直接取值，要转换成对应的数据类型的指针，再取值。 * 即*(int*)(*(int*)l) */ cout &amp;lt;&amp;lt; &amp;#34;变量的内存地址&amp;#34; &amp;lt;&amp;lt; endl; cout &amp;lt;&amp;lt; &amp;#34;&amp;amp;i: &amp;#34; &amp;lt;&amp;lt; &amp;amp;i &amp;lt;&amp;lt; endl; cout &amp;lt;&amp;lt; &amp;#34;&amp;amp;j: &amp;#34; &amp;lt;&amp;lt; &amp;amp;j &amp;lt;&amp;lt; endl; cout &amp;lt;&amp;lt; &amp;#34;&amp;amp;k: &amp;#34; &amp;lt;&amp;lt; &amp;amp;k &amp;lt;&amp;lt; endl; cout &amp;lt;&amp;lt; &amp;#34;&amp;amp;l: &amp;#34; &amp;lt;&amp;lt; &amp;amp;l &amp;lt;&amp;lt; endl &amp;lt;&amp;lt; endl; cout &amp;lt;&amp;lt; &amp;#34;变量的值&amp;#34; &amp;lt;&amp;lt; endl; cout &amp;lt;&amp;lt; &amp;#34;i: &amp;#34; &amp;lt;&amp;lt; i &amp;lt;&amp;lt; endl; cout &amp;lt;&amp;lt; &amp;#34;j: &amp;#34; &amp;lt;&amp;lt; j &amp;lt;&amp;lt; endl; cout &amp;lt;&amp;lt; &amp;#34;k: &amp;#34; &amp;lt;&amp;lt; k &amp;lt;&amp;lt; endl; cout &amp;lt;&amp;lt; &amp;#34;l: &amp;#34; &amp;lt;&amp;lt; l &amp;lt;&amp;lt; endl &amp;lt;&amp;lt; endl; cout &amp;lt;&amp;lt; *i &amp;lt;&amp;lt; endl; cout &amp;lt;&amp;lt; &amp;#34;l的值转成\&amp;#34;int*\&amp;#34;类型后取值&amp;#34; &amp;lt;&amp;lt; endl; cout &amp;lt;&amp;lt; *(int*)l &amp;lt;&amp;lt; &amp;#34;\thex: &amp;#34; &amp;lt;&amp;lt; (int*)(*(int*)l) &amp;lt;&amp;lt; endl; cout &amp;lt;&amp;lt; &amp;#34;l的值指向的地址的值，再取前面的值指向的地址的值:&amp;#34; &amp;lt;&amp;lt; *(int*)(*(int*)l) &amp;lt;&amp;lt; endl &amp;lt;&amp;lt; endl; return 0; } 运行结果 变量的内存地址 &amp;amp;i: 0x64fe18 &amp;amp;j: 0x64fe10 &amp;amp;k: 0x64fe0c &amp;amp;l: 0x64fe08 变量的值 i: 0x2632540 j: 0x2632560 k: 0 l: 6618640 1 l的值转成&amp;#34;int*&amp;#34;类型后取值 40052064 hex: 0x2632560 l的值指向的地址的值，再取前面的值指向的地址的值:2 变量的内存分布 地址的值可能有所不同</description>
+    </item>
+    
+    <item>
+      <title>mount cifs in android</title>
+      <link>https://blog.oldshensheep.com/note/mount-cifs-in-android/</link>
+      <pubDate>Thu, 28 Jan 2021 17:23:33 +0000</pubDate>
+      
+      <guid>https://blog.oldshensheep.com/note/mount-cifs-in-android/</guid>
+      <description>虽然 Google 在新版本的 android 中提供了新的访问文件的方式，一些文件管理器（如 MiXplorer ）可以访问 smb，其他应用程序访问这个文件管理器就可以间接的访问 smb 了。
+但是并不是所有的应用程序都支持，所以直接挂载 smb 是一个比较好的解决办法（必须要 Root）。
+前提条件 Android 系统获取 Root 权限 安装了 BusyBox, 注意必须是 BusyBox ，而不是系统自带的 ToyBox，在测试中 toybox 不支持挂载网络文件系统。我是通过 DevCheck 这个软件查看的。 折腾的结果 需要快速解决问题的只看这个就行了
+执行下面的程序就可以挂载 smb 了，根据自己实际情况修改 host,user,pass,还有脚本末尾的挂载位置
+host=&amp;#34;192.168.1.5&amp;#34; user=&amp;#34;sheep&amp;#34; pass=&amp;#34;123456789&amp;#34; gid=9997 uid=9997 file_mode=0770 dir_mode=0770 # 挂载前要新建好挂载的位置的文件夹 # //$host/main 是smb的文件夹 /.../emulated/0/{cifs/main} 是手机存储文件夹 su -mm -c mount -o user=$user,pass=$pass,rw,gid=$gid,uid=$uid,file_mode=$file_mode,dir_mode=$dir_mode -t cifs //$host/main /mnt/runtime/full/emulated/0/cifs/main 折腾的大致过程 首先打开终端，这里用的是 termux，理论上其他终端也可以。
+然后输入下面的命令
+su # 获取root权限 mkdir /mnt/sdcard/cifs # 挂载点 mount -o user=******,pass=&amp;#34;*****&amp;#34; -t cifs //192.</description>
+    </item>
+    
+    <item>
+      <title>学习Markdown</title>
+      <link>https://blog.oldshensheep.com/note/markdown-learning/</link>
+      <pubDate>Sun, 06 Dec 2020 10:24:12 +0000</pubDate>
+      
+      <guid>https://blog.oldshensheep.com/note/markdown-learning/</guid>
+      <description>常用的 Markdown 语法，记录一些加强记忆。
+删除线 ~~删除线~~ 删除线
+斜体 _斜体_ 斜体
+粗体 **粗体** 粗体
+斜体粗体 **_斜体粗体_** 斜体粗体
+水平分割线 --- 链接 &amp;lt;http://http://oldshensheep.com&amp;gt; http://http://oldshensheep.com
+[我是一个链接](http://oldshensheep.com) 我是一个链接
+![我的桌面图片](http://example.com/p.jpg) </description>
+    </item>
+    
+    <item>
+      <title>一些重要的东西</title>
+      <link>https://blog.oldshensheep.com/note/something-importent/</link>
+      <pubDate>Sat, 05 Dec 2020 23:55:24 +0000</pubDate>
+      
+      <guid>https://blog.oldshensheep.com/note/something-importent/</guid>
+      <description>总有一些东西对自己有很大的影响……
+他们的出现看起来很平凡，但是潜在的影响却是巨大的。
+平凡而影响巨大
+Music VOCALOID Android Phone Python 暂时这么多，可能还有其他的未想起来。
+只是一个记录</description>
+    </item>
+    
+    <item>
+      <title>我的音乐之旅</title>
+      <link>https://blog.oldshensheep.com/note/my-musical-journey/</link>
+      <pubDate>Sat, 19 Sep 2020 11:44:16 +0000</pubDate>
+      
+      <guid>https://blog.oldshensheep.com/note/my-musical-journey/</guid>
+      <description>音乐是多么奇妙！
+我认为音乐在我的人生中很重要，虽然我“真正开始”听音乐的时候比较晚，大概高中吧。在此之前，我认为我所听的非我所想。但到高中之后我听的音乐比以往听过的音乐都要多的多，对音乐的了解也比以前多得多。就像发现了宝藏，发现了秘密。
+初中之前 初中之前听的音乐大都是“流行音乐”，也不经常听。
+高中 高中认识了网易云音乐，这是开端 一次网友叫我关注他的网易云音乐
+然后认识了 Vocaloid，这是开始 深入 Vocaloid，这是认识 大学 有了技术就可以实现心中所想
+音乐歌单比对 第一阶段 Python 歌单比对 控制台
+参考了网上的各种实现，这里是爬取网页解析后获取歌单的 Python 歌单比对（Web.py）Web 端
+看 web.py 的官方文档草草写了个，HTML、CSS 和 JS 还不怎么会 第二阶段 Python 歌单比对 QQ 音乐支持
+用 QQ 音乐的 API Java 歌单比对 控制台
+歌单比对，算是重写了 Python 版的 Java 歌单比对 Android
+东拼西凑的实验品…… Java 歌单比对 （用第开源的 API 程序获取数据）控制台 第三阶段 HTML、CSS、Javascript
+认识了 Vue.js，写起来很快。用了开源的 API 程序所以不用写后端了。 </description>
+    </item>
+    
+    <item>
+      <title>音乐偏好心理学</title>
+      <link>https://blog.oldshensheep.com/note/psychology-of-music-preference/</link>
+      <pubDate>Fri, 06 Mar 2020 21:46:41 +0000</pubDate>
+      
+      <guid>https://blog.oldshensheep.com/note/psychology-of-music-preference/</guid>
+      <description>什么样的人喜欢什么样的音乐，一个人的性格一定程度上决定了 ta 所喜欢的音乐。
+这里没有深入的了解其中的原理，只是对几种性格和喜欢的音乐的类型做了一些介绍。
+对我当初被遗忘很久的一个兴趣的一个总结。
+什么样的人喜欢什么样的音乐 What kind of people like what kind of music.
+为什么人们喜欢的音乐有差别？是什么决定了我们喜欢的音乐？
+你说狗与狗之间有狗格的差异吗？
+大五人格 这里有个名词要了解一下Big Five personality traits（大五人格）你可以点击链接来获得更详细的解释。
+它提出了五个维度来描述人格和心理
+经验开放性（Openness to experience）(inventive/curious vs. consistent/cautious)
+这个所说的开放不同于外向。开放性是对艺术、情感、冒险、不寻常的想法、想象力、好奇心和各种经验的普遍理解。与封闭的人相比，他们倾向于更有创造力，也更了解自己的感受。他们也更有可能持有非常规的信念。 尽责性（Conscientiousness）(efficient/organized vs. easy-going/careless)
+尽责趋向于自律，尽职尽责的行动。它与人们控制，调节和引导冲动的方式有关。责任心高的人更倾向于有计划的行为而不是心血来潮的行为。 外向性（Extraversion）(outgoing/energetic vs. solitary/reserved)
+外向性的特征是活动的广度（而不是深度）。外向型人喜欢与人互动，通常被认为充满活力。性格内向的人似乎安静，低调，深思，很少参与社交世界。他们缺乏社会参与不应被解释为害羞或沮丧。相反，他们比外向者更独立于自己的社交世界。 宜人性（Agreeableness）(friendly/compassionate vs. challenging/detached)
+宜人性反应出个体对关心社会和谐的差异。宜人性高的人更重视与他人相处，他们通常体贴，善良，慷慨，信任他人，值得信赖，值得信赖。他们对人性持乐观态度。宜人性低的人将自身利益置于与他人相处之上。他们通常不关心他人的幸福，也不太可能为他人着想。有时他们对他人动机的怀疑导致他们被认为是不被信任的、不友好的和不合作的。 神经质（Neuroticism）(sensitive/nervous vs. secure/confident)
+神经质倾向于经历负面情绪，例如愤怒，焦虑和沮丧。它有时被称为情绪不稳定。神经质评分高的人情绪激动，容易受到压力的影响，在表达情感的方式上也容易变态。神经质较低的人不太容易沮丧，也不太容易情绪化。他们往往保持冷静，情绪稳定，没有持续的负面情绪。摆脱消极情绪并不意味着他们会经历很多积极情绪。 这五个单词缩写为 OCEAN，妙啊！
+每个人的每个维度不是唯一的，而是多元的，每个维度都有不同的高低倾向。不同的人这五个维度组的倾向不同。
+孪生研究和其他研究表明，个体间大约一半的变异是由遗传学引起的，而另一半则是由环境引起的。
+人格与音乐偏好之间的关系 经验开放性 在五种维度中它对音乐偏好的影响最大。开放性较高的人更喜欢复杂的和新奇的音乐，比如古典音乐，爵士乐和 eclecticism（折衷主义） music，以及 intense（激烈的） 和 rebellious（叛逆的） music. 在研究中，反映和复杂的体裁包括古典、蓝调、爵士和民间音乐，而激烈和反叛的体裁包括摇滚、另类和重金属音乐。
+尽责性 尽责性与强烈而叛逆的音乐（例如摇滚和重金属音乐）负相关。
+外向性 性格外向者更喜欢快乐，乐观和传统音乐以及说唱，嘻哈，soul（灵魂），电子和舞蹈音乐等充满活力和节奏性的音乐。此外，性格外向的人倾向于听更多的音乐，并且生活中经常出现背景音乐。他们比其他人更有可能在进行其他活动（例如跑步，与朋友聚会或学习）时听音乐。
+宜人性 具有这种人格的人更喜欢乐观的和传统的音乐，此外更偏向这个维度的听众在听他们从未听过的音乐时表现出更强烈的情绪。
+神经质 越不神经质的人，听强烈而反叛的音乐（例如另类，摇滚和重金属）的可能性就越小；他们可能会喜欢欢乐的传统音乐，例如乡村音乐，音轨和流行音乐。越神经质的人更可能使用音乐来调节情绪，并经历更强烈的情绪影响，特别是消极情绪。
+个人和环境对音乐偏好的影响 性别，年龄，季节，熟悉程度，自我观点，心情。这些都会影响音乐偏好，
+参考&amp;amp;拓展 tips:关于这个话题的中文资料比较少，大多为英文。</description>
+    </item>
+    
+    <item>
+      <title>如何在Linux上创建一个ISCSI服务器</title>
+      <link>https://blog.oldshensheep.com/note/create-linux-iscsi-server/</link>
+      <pubDate>Tue, 25 Feb 2020 09:55:01 +0000</pubDate>
+      
+      <guid>https://blog.oldshensheep.com/note/create-linux-iscsi-server/</guid>
+      <description>如何在 Linux 上创建一个 ISCSI 服务器？如何用不同的存储介质作为后端存储？
+因为一次黑群晖系统挂了，所以就学习了这个技能来解决这个问题。后来也就抛弃黑群晖了，黑群晖是真的香，但是有时候不怎么稳定，而且不像 Ubuntu 那样可以自由的安装各种软件。
+安装方法&amp;amp;系统环境 Debian 及其衍生出来的系统，如 Ubuntu，Deepin 等，我是用 Ubuntu 18.04 LTS。
+安装 targetcli-fb sudo apt update sudo apt install targetcli-fb 标题 命令有两种模式，一种是交互式模式，一种是命令行模式。这里用的是交互模式。
+输入 targetcli 就可以进入命令行模式了。
+进入交互式模式可以使用 ls,pwd,cd 等命令。
+按 2 次 TAB 键可以查看所有可用的命令，在每个目录下都可以通过这种方式查看可用的命令
+block 块设备 fileio 文件 pscsi 物理 SCSI ramdisk 内存 创建后端存储的文件 这里我们用一个文件做后端存储就行了，因为在写 blog 之前数据已经提取出来了这里演示就创建一个空白文件。
+创建一个 1G 的文件
+dd if=/dev/zero of=test bs=1M count=1000 创建后端存储 进入 targetcli 控制台输入
+cd backstores/fileio # 这里按TAB会有提示不必一个个字母输入 create lun0 /root/test # 创建一个名为 lun0 的后端存储 回到根目录输入</description>
+    </item>
+    
+    <item>
+      <title>用github&#43;hexo创建自己的blog网站</title>
+      <link>https://blog.oldshensheep.com/note/create-blog/</link>
+      <pubDate>Sat, 11 Jan 2020 17:08:03 +0000</pubDate>
+      
+      <guid>https://blog.oldshensheep.com/note/create-blog/</guid>
+      <description>用 github 和 hexo 创建一个属于自己的 blog 网站
+本文章是在 Windows 环境下完成的。
+如果认真看完了这个教程还是不会做，那……
+建立一个 github 账号 点击进入网站注册 https://github.com
+建立一个仓库（repository） 第一步，点击新建按钮
+第二步，创建仓库
+下载安装 git 点击下载 git https://git-scm.com/download/win
+国内下载可能比较慢，淘宝镜像地址 https://npm.taobao.org/mirrors/git-for-windows/v2.24.1.windows.2/Git-2.24.1.2-64-bit.exe
+安装一路下一步就行了
+下载安装 nodejs 点击下载安装 nodejs https://nodejs.org/dist/v12.14.1/node-v12.14.1-x64.msi
+下一步，下一步，下一步（你安装国内的一些软件可不能这样哦）
+安装 hexo 在某个地方新建一个文件夹，这个文件夹是储存你网站相关的文件的
+有个小技巧：
+这里我把文件夹建在了桌面，在空白处按 Shift 然后鼠标右键可以快捷在此处打开 Powershell
+在 cmd/PowerShell 输入
+cmd npm install -g hexo-cli cd #你新建文件夹的名字 hexo init 部署到 github 安装部署工具
+npm install hexo-deployer-git --save 先编辑一下 hexo 文件夹里的_config.yml 这个配置文件，在底部添加
+deploy: type: git repo: https://github.com/oldshensheep/oldshensheep.github.io # oldshensheep换成你的用户名就行了 branch: master 然后在刚才的 powershell 窗口输入</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>C/C&#43;&#43; on oldshensheep</title>
+    <link>https://blog.oldshensheep.com/tags/c/c&#43;&#43;/</link>
+    <description>Recent content in C/C&#43;&#43; on oldshensheep</description>
+    <image>
+      <url>https://blog.oldshensheep.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://blog.oldshensheep.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language><atom:link href="https://blog.oldshensheep.com/tags/c/c++/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Pointers in C/C&#43;&#43;</title>
+      <link>https://blog.oldshensheep.com/note/c&#43;&#43;-pointer/</link>
+      <pubDate>Mon, 14 Jun 2021 14:42:56 +0000</pubDate>
+      
+      <guid>https://blog.oldshensheep.com/note/c&#43;&#43;-pointer/</guid>
+      <description>C/C++ 的指针是什么？int* ? *(int*)var? 是什么鬼？？？
+指针就是地址，与其说指针，地址更容易理解。
+指针变量的定义 一般的定义一个指针变量：数据类型* 变量名= new 数据类型();
+int* i = new int(1); Sheep* sheep = new Sheep(&amp;#34;mmm&amp;#34;); 一个指针变量是有类型的（这不是废话？）为什么要有类型？地址大小不都是一样的吗？一般是32位或64位啊。
+但是如果指针变量没有类型的话用*运算符怎么取值？是取32位还是64位还是其他的？所以定义指针变量时声明的变量类型就是这个道理。
+如果你学过了汇编，下面的例子可以帮助你理解，看例子1，这里将2020h移入一个内存空间，为什么要加word ptr? 2020h不就是2个字节吗，你再声明写入一个2字节的内存空间不是有点多余？这里看起来有点多余，但是如果有这样的汇编指令（例子2和3），他们的行为一样吗？
+实际上是不一样的mov word ptr [addr],20h可以理解为mov word ptr [addr],0020h是实际上写入了2个字节的数据，例子3只写入了一个字节。再看例子4，如果不加word ptr你怎么区分例子2和例子3？（就是说你不知道你要写入多少数据）
+mov word ptr [addr],2020h ;例子1 mov word ptr [addr],20h ;例子2 mov byte ptr [addr],20h ;例子3 mov [addr],20h ;例子4 mov ax,[addr] ;例子5 可以运行、修改下面的汇编代码测试上面的说法。
+DATA SEGMENT num dd 660F0655H DATA ENDS CODE SEGMENT ASSUME CS:CODE,DS:DATA START: mov ax,data mov ds,ax lea si,num mov word ptr [si],2020h mov ah,4ch int 21h CODE ENDS END START 指针的具体使用 代码 #include &amp;lt;iostream&amp;gt; using namespace std; int main() { int* i = new int(1); int* j = new int(2); int k = 0; int l = 0x64fe10; // 或者 &amp;amp;j /** * l为j变量的地址，理论上**l就可以取j的值 *l取j的内存地址，再取值。 * 实际上因为int类型不能直接取值，要转换成对应的数据类型的指针，再取值。 * 即*(int*)(*(int*)l) */ cout &amp;lt;&amp;lt; &amp;#34;变量的内存地址&amp;#34; &amp;lt;&amp;lt; endl; cout &amp;lt;&amp;lt; &amp;#34;&amp;amp;i: &amp;#34; &amp;lt;&amp;lt; &amp;amp;i &amp;lt;&amp;lt; endl; cout &amp;lt;&amp;lt; &amp;#34;&amp;amp;j: &amp;#34; &amp;lt;&amp;lt; &amp;amp;j &amp;lt;&amp;lt; endl; cout &amp;lt;&amp;lt; &amp;#34;&amp;amp;k: &amp;#34; &amp;lt;&amp;lt; &amp;amp;k &amp;lt;&amp;lt; endl; cout &amp;lt;&amp;lt; &amp;#34;&amp;amp;l: &amp;#34; &amp;lt;&amp;lt; &amp;amp;l &amp;lt;&amp;lt; endl &amp;lt;&amp;lt; endl; cout &amp;lt;&amp;lt; &amp;#34;变量的值&amp;#34; &amp;lt;&amp;lt; endl; cout &amp;lt;&amp;lt; &amp;#34;i: &amp;#34; &amp;lt;&amp;lt; i &amp;lt;&amp;lt; endl; cout &amp;lt;&amp;lt; &amp;#34;j: &amp;#34; &amp;lt;&amp;lt; j &amp;lt;&amp;lt; endl; cout &amp;lt;&amp;lt; &amp;#34;k: &amp;#34; &amp;lt;&amp;lt; k &amp;lt;&amp;lt; endl; cout &amp;lt;&amp;lt; &amp;#34;l: &amp;#34; &amp;lt;&amp;lt; l &amp;lt;&amp;lt; endl &amp;lt;&amp;lt; endl; cout &amp;lt;&amp;lt; *i &amp;lt;&amp;lt; endl; cout &amp;lt;&amp;lt; &amp;#34;l的值转成\&amp;#34;int*\&amp;#34;类型后取值&amp;#34; &amp;lt;&amp;lt; endl; cout &amp;lt;&amp;lt; *(int*)l &amp;lt;&amp;lt; &amp;#34;\thex: &amp;#34; &amp;lt;&amp;lt; (int*)(*(int*)l) &amp;lt;&amp;lt; endl; cout &amp;lt;&amp;lt; &amp;#34;l的值指向的地址的值，再取前面的值指向的地址的值:&amp;#34; &amp;lt;&amp;lt; *(int*)(*(int*)l) &amp;lt;&amp;lt; endl &amp;lt;&amp;lt; endl; return 0; } 运行结果 变量的内存地址 &amp;amp;i: 0x64fe18 &amp;amp;j: 0x64fe10 &amp;amp;k: 0x64fe0c &amp;amp;l: 0x64fe08 变量的值 i: 0x2632540 j: 0x2632560 k: 0 l: 6618640 1 l的值转成&amp;#34;int*&amp;#34;类型后取值 40052064 hex: 0x2632560 l的值指向的地址的值，再取前面的值指向的地址的值:2 变量的内存分布 地址的值可能有所不同</description>
+    </item>
+    
+  </channel>
+</rss>

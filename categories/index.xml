@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Categories on oldshensheep</title>
+    <link>https://blog.oldshensheep.com/categories/</link>
+    <description>Recent content in Categories on oldshensheep</description>
+    <image>
+      <url>https://blog.oldshensheep.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://blog.oldshensheep.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 09 Aug 2022 20:00:00 +0000</lastBuildDate><atom:link href="https://blog.oldshensheep.com/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>教程</title>
+      <link>https://blog.oldshensheep.com/categories/%E6%95%99%E7%A8%8B/</link>
+      <pubDate>Tue, 09 Aug 2022 20:00:00 +0000</pubDate>
+      
+      <guid>https://blog.oldshensheep.com/categories/%E6%95%99%E7%A8%8B/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Web</title>
+      <link>https://blog.oldshensheep.com/categories/web/</link>
+      <pubDate>Mon, 27 Sep 2021 15:50:00 +0000</pubDate>
+      
+      <guid>https://blog.oldshensheep.com/categories/web/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>折腾</title>
+      <link>https://blog.oldshensheep.com/categories/%E6%8A%98%E8%85%BE/</link>
+      <pubDate>Thu, 28 Jan 2021 17:23:33 +0000</pubDate>
+      
+      <guid>https://blog.oldshensheep.com/categories/%E6%8A%98%E8%85%BE/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>人生</title>
+      <link>https://blog.oldshensheep.com/categories/%E4%BA%BA%E7%94%9F/</link>
+      <pubDate>Sat, 19 Sep 2020 11:44:16 +0000</pubDate>
+      
+      <guid>https://blog.oldshensheep.com/categories/%E4%BA%BA%E7%94%9F/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>心理学</title>
+      <link>https://blog.oldshensheep.com/categories/%E5%BF%83%E7%90%86%E5%AD%A6/</link>
+      <pubDate>Fri, 06 Mar 2020 21:46:41 +0000</pubDate>
+      
+      <guid>https://blog.oldshensheep.com/categories/%E5%BF%83%E7%90%86%E5%AD%A6/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
